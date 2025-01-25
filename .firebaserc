@@ -1,8 +1,5 @@
 {
   "projects": {
-    "default": "guess-the-person-4dbbd",
-    "prod": "guess-the-person-4dbbd"
-  },
-  "targets": {},
-  "etags": {}
+    "default": "guess-the-person-4dbbd"
+  }
 }
