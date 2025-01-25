@@ -6,8 +6,23 @@
     "start": "next start"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@mozilla/readability": "^0.5.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "axios": "^1.7.9",
+    "fs": "^0.0.1-security",
+    "jsdom": "^26.0.0",
+    "net": "^1.0.2",
     "next": "^14.2.21",
+    "postcss": "^8.5.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^4.0.0",
+    "tls": "^0.0.1"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }
