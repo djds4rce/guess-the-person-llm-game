@@ -88,12 +88,12 @@ function Home() {
     }
   }, [history]);
   return (
-<div class="container mx-auto px-4 py-8 pb-8 h-screen flex flex-col">  
-  <div class="bg-[#D6E9F2] p-4 rounded-lg shadow-md mb-4 shadow-xl border-r-4 border-gray-500 p-6 mb-4 translate-y-2 translate-x-2">
-        <h1 class="text-2xl font-bold text-gray-800">AI Charades</h1> 
+<div class="container mx-auto px-4 py-1 pb-8 h-screen flex flex-col">  
+  <div class="bg-[#D6E9F2] p-4 rounded-lg shadow-md mb-2 shadow-xl border-r-4 border-gray-500 translate-y-2 translate-x-2">
+        <h1 class="text-xl font-bold text-gray-800">AI Charades</h1> 
         <p class="text-gray-600 text-sm">Play the AI guessing game.</p> 
     </div>   
-    <div class="flex-grow overflow-y-auto bg-[#D6E9F2] rounded-lg shadow-xl border-r-4 border-gray-900 p-6 mb-4 translate-y-2 translate-x-2">
+    <div class="flex-grow overflow-y-auto bg-[#D6E9F2] rounded-lg shadow-xl border-r-4 border-gray-900 p-4 mb-2 translate-y-2 translate-x-2">
           {renderingHistory.map(render => {
             return render.role == "model" ? (<div class="mb-4">
               <div class="flex items-start justify-end">
