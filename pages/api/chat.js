@@ -17,6 +17,6 @@ export default async function handler(
       history
     });
     const result = await chat.sendMessage(prompt);
-    res.status(200).json({ message:result.response.text(),  content: articleContent  })
+    res.status(200).json({ message:result.response.text() })
   }
 }

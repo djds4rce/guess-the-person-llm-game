@@ -1,1 +1,15 @@
 @import "tailwindcss";
+@media screen and (max-width: 320px) {
+    #__next {
+      display: flex
+    }
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  position: relative;
+}
+#__next {
+  height: 100%;
+}

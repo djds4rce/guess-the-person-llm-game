@@ -1,6 +1,10 @@
 
 // components/ClientOnlyComponent.js
 import { useCallback, useEffect, useState, useRef } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRobot, faUser, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+
+
 
 
 function Home() {
@@ -71,6 +75,7 @@ function Home() {
   };
   useEffect(() => {
     token.current = crypto.randomUUID();
+    document.querySelector("body").classList.add("bg-gray-100");
   },[token]);
 
   useEffect(() => {
@@ -83,59 +88,59 @@ function Home() {
     }
   }, [history]);
   return (
-    <main className="m-4" suppressHydrationWarning>
-      <div className="flex h-[97vh] w-full flex-col" >
-        <div
-          className="flex-1 space-y-6 overflow-y-auto rounded-xl bg-slate-200 p-4 text-sm leading-6 text-slate-900 shadow-sm dark:bg-slate-900 dark:text-slate-300 sm:text-base sm:leading-7"
-        >
+<div class="container mx-auto px-4 py-8 pb-16 h-screen flex flex-col">  
+  <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+        <h1 class="text-2xl font-bold text-gray-800">AI Charades</h1> 
+        <p class="text-gray-600 text-sm">Play the AI guessing game.</p> 
+    </div>   
+    <div class="flex-grow overflow-y-auto bg-[#FAF9F6] border border-gray-400 rounded-lg shadow-md p-6 mb-4">
           {renderingHistory.map(render => {
-            return render.role == "model" ? (<div className="flex items-start">
-              <div
-                className="flex rounded-b-xl rounded-tr-xl bg-slate-50 p-4 dark:bg-slate-800 sm:max-w-md md:max-w-2xl"
-              >
-                 {render.parts[0].text}
+            return render.role == "model" ? (<div class="mb-4">
+              <div class="flex items-start justify-end">
+                  <div class="bg-white rounded-lg p-4 mr-2 max-w-[80%]">
+                      <p class="text-gray-800">{render.parts[0].text}</p>
+                  </div>
+                  <div class="bg-[#F2C94C] text-white rounded-full p-2"><FontAwesomeIcon icon={faRobot} className="fas fa-robot" 
+                  ></FontAwesomeIcon></div> 
               </div>
-            </div>) : (<div className="flex flex-row-reverse items-start">
-              <div
-                className="flex min-h-[85px] rounded-b-xl rounded-tl-xl bg-slate-50 p-4 dark:bg-slate-800 sm:min-h-0 sm:max-w-md md:max-w-2xl"
-              >
-                <p>
-                 {render.parts[0].text}
-                </p>
-              </div>
-            </div>)
+          </div>) : (
+             <div class="mb-4">
+             <div class="flex items-start">
+                 <div class="bg-gray-300 rounded-full p-2 mr-2"><FontAwesomeIcon className='fas fa-user' icon={faUser}/></div> 
+                 <div class="bg-white rounded-lg p-4">
+                     <p class="text-gray-800">{render.parts[0].text}</p>
+                 </div>
+             </div>
+         </div>)
           })}
           <div ref={bottomRef}/>
-
-        </div>
-        <form className="mt-2" onSubmit={handleSubmit}>
-        <label htmlFor="chat-input" className="sr-only">Enter your guess or ask the AI for clues</label>
-
-          <div className="relative">
-            <textarea
+      </div>
+      <form  onSubmit={handleSubmit}>
+       <div class="flex justify-center">
+        
+            <input
               id="chat-input"
-              className="block w-full resize-none rounded-xl border-none bg-slate-200 p-4 pl-10 pr-20 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-slate-900 dark:text-slate-200 dark:placeholder-slate-400 dark:focus:ring-blue-600 sm:text-base"
+              className="w-full border border-gray-300 rounded-l-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
               placeholder="Enter your guess or ask the AI for clues"
-              rows="1"
               required
               value={prompt}
               onChange={(e)=> setPrompt(e.target.value)}
               disabled={isSubmitting}
               onKeyDown={handleKeyDown}
               ref={textAreaRef}
-            ></textarea>
+            ></input>
             <button
               type="submit"
-              className="absolute bottom-2 right-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:text-base"
+              className="bg-[#F2C94C] hover:bg-[#e6b836] text-white font-bold py-2 px-4 mx-2 rounded-r-md border-l border-gray-300"
               disabled={isSubmitting}
             >
-              Send <span className="sr-only">Send message</span>
+              <FontAwesomeIcon className='fas fa-paper-plane' icon={faPaperPlane}/>
             </button>
-          </div>
+
+        </div>
         </form>
       </div>
-    </main>
-  )
+        )
 }
 
 export default Home
