@@ -88,26 +88,26 @@ function Home() {
     }
   }, [history]);
   return (
-<div class="container mx-auto px-4 py-8 pb-16 h-screen flex flex-col">  
-  <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+<div class="container mx-auto px-4 py-8 pb-16 h-screen flex flex-col ">  
+  <div class="bg-[#D6E9F2] p-4 rounded-lg shadow-md mb-4 shadow-xl border-r-4 border-gray-500 p-6 mb-4 translate-y-2 translate-x-2">
         <h1 class="text-2xl font-bold text-gray-800">AI Charades</h1> 
         <p class="text-gray-600 text-sm">Play the AI guessing game.</p> 
     </div>   
-    <div class="flex-grow overflow-y-auto bg-[#FAF9F6] border border-gray-400 rounded-lg shadow-md p-6 mb-4">
+    <div class="flex-grow overflow-y-auto bg-[#D6E9F2] rounded-lg shadow-xl border-r-4 border-gray-900 p-6 mb-4 translate-y-2 translate-x-2">
           {renderingHistory.map(render => {
             return render.role == "model" ? (<div class="mb-4">
               <div class="flex items-start justify-end">
-                  <div class="bg-white rounded-lg p-4 mr-2 max-w-[80%]">
+                  <div class="bg-white rounded-lg p-4 mr-2 max-w-[80%] border-2">
                       <p class="text-gray-800">{render.parts[0].text}</p>
                   </div>
-                  <div class="bg-[#F2C94C] text-white rounded-full p-2"><FontAwesomeIcon icon={faRobot} className="fas fa-robot" 
+                  <div class="bg-[#4a8394] text-white rounded-full p-2"><FontAwesomeIcon icon={faRobot} className="fas fa-robot" 
                   ></FontAwesomeIcon></div> 
               </div>
           </div>) : (
              <div class="mb-4">
              <div class="flex items-start">
-                 <div class="bg-gray-300 rounded-full p-2 mr-2"><FontAwesomeIcon className='fas fa-user' icon={faUser}/></div> 
-                 <div class="bg-white rounded-lg p-4">
+                 <div class="bg-[#add2e4] rounded-full p-2 mr-2"><FontAwesomeIcon className='fas fa-user' icon={faUser}/></div> 
+                 <div class="bg-white rounded-lg p-4 border-1">
                      <p class="text-gray-800">{render.parts[0].text}</p>
                  </div>
              </div>
@@ -116,7 +116,7 @@ function Home() {
           <div ref={bottomRef}/>
       </div>
       <form  onSubmit={handleSubmit}>
-       <div class="flex justify-center">
+       <div class="flex justify-center bg-[#D6E9F2] rounded-lg shadow-xl border-r-4 border-gray-500 p-6 mb-4 translate-y-2 translate-x-2">
         
             <input
               id="chat-input"
@@ -131,7 +131,7 @@ function Home() {
             ></input>
             <button
               type="submit"
-              className="bg-[#F2C94C] hover:bg-[#e6b836] text-white font-bold py-2 px-4 mx-2 rounded-r-md border-l border-gray-300"
+              className="bg-[#4a8394] hover:bg-[#e6b836] text-white font-bold py-2 px-4 mx-2 rounded-r-md border-l border-gray-300"
               disabled={isSubmitting}
             >
               <FontAwesomeIcon className='fas fa-paper-plane' icon={faPaperPlane}/>
