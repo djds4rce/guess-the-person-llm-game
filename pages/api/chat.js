@@ -12,7 +12,7 @@ export default async function handler(
     const articleContent = await getArticleContent(token);
     const systemInstruction = generateSystemPrompt(articleContent);
     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b", systemInstruction });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", systemInstruction });
     const chat = model.startChat({
       history
     });

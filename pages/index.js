@@ -10,11 +10,7 @@ import { faRobot, faUser, faPaperPlane } from "@fortawesome/free-solid-svg-icons
 function Home() {
   const token = useRef(null);
   const [history, setHistory] = useState([ //Model complains if first message is not from user. Mocking user message.
-    { "role": "user", "parts": [{ "text": "Hello" }] },
-    {
-      "role": "model",
-      "parts": [{ "text": "Hello! Welcome to the fun AI game of guess the person. I have randomly choosen a public personality in my brain(Yea i know i got no real brain but lets assume for now). The way you win the game is by guessing who the person is. But it is not so easy, I will not reveal the name of the person but you can talk to me and ask information about the person and see if you can guess who it is. All the best" }]
-    }])
+    { "role": "user", "parts": [{ "text": "Hello" }] }])
   const [prompt, setPrompt] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
