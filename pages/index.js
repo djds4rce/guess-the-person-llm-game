@@ -166,7 +166,7 @@ function Home() {
           </a>
         </div>
       </div>) : null}
-      {view === "chat" ? <div className="container mx-auto px-4 py-1 pb-8 h-screen flex flex-col">
+      {view === "chat" ? <div className="container mx-auto h-[90vh] flex flex-col">
         <div className="bg-[#D6E9F2] p-4 rounded-lg shadow-md mb-2 shadow-xl border-r-4 border-gray-500 translate-y-2 translate-x-2">
           <h1 className="text-xl font-bold text-gray-800">AI Charades</h1>
           <p className="text-gray-600 text-sm">Play the AI guessing game.</p>
