@@ -33,7 +33,6 @@ const WIKI_URLS = [
     "William_Shakespeare",
     "John_Lennon",
     "Napoleon",
-    "Bhagat_Singh",
     "Henry_Ford",
     "Rosa_Parks",
     "Mark_Twain",
@@ -48,6 +47,6 @@ const WIKI_URLS = [
     "Jimi_Hendrix",
     "Steve_Irwin",
     "Neil_Armstrong",
-    "Carl_Sagan"
+    "Carl_Sagan",
 ];
 export default WIKI_URLS;
