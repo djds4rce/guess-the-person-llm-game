@@ -171,10 +171,10 @@ function Home() {
         </div>
       </div>) : null}
       {view === "chat" ? <div className="container mx-auto h-[88vh] sm:h-[85vh] flex flex-col">
-        <div className="p-4 rounded-lg shadow-md mb-2 translate-y-2 translate-x-2">
+        <div className="p-4 rounded-lg shadow-md mb-2">
           <h1 className="text-xl font-bold text-[#4a8394]">AI Charades</h1>
         </div>
-        <div className="flex-grow overflow-y-auto border-gray-900 p-4 mb-2 translate-y-2 translate-x-2">
+        <div className="flex-grow overflow-y-auto border-gray-900 p-4 mb-2">
           {renderingHistory.map(render => {
             return render.role == "model" ? (<div className="mb-4">
               <div className="flex items-start justify-end">
@@ -197,7 +197,7 @@ function Home() {
           <div ref={bottomRef} />
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="fixed bottom-0 left-0 right-0 flex justify-center rounded-lg shadow-xl border-gray-500 p-6 mb-4 translate-y-2 translate-x-2">
+          <div className="flex justify-center rounded-lg shadow-xl border-gray-500 p-6 mb-4">
 
             <input
               id="chat-input"
