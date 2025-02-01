@@ -19,6 +19,7 @@ function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [view, setView] = useState("landing");
   const [finalMessage, setFinalMessage] = useState("");
+  const [finalState, setFinalState] = useState(false);
 
 
   const renderingHistory = history.slice(1);
@@ -103,10 +104,13 @@ function Home() {
 
   const handleResponse = (result, setHistory) => {
     const text = result.message;
-
+ 
     if (text.includes("END_OF_ROUND") || text.includes("END_OF_ROUND_FAIL")) {
-        const cleanedText = text.replace(/END_OF_ROUND|END_OF_ROUND_FAIL/g, '');
+        const isPass = text.includes("END_OF_ROUND") && ! text.includes("END_OF_ROUND_FAIL");
+        let cleanedText = text.replace(/END_OF_ROUND/g, '');
+        cleanedText = cleanedText.replace(/_FAIL/g, '');
         setFinalMessage(cleanedText);
+        setFinalState(isPass);
         setView("end");
     } else {
       setHistory((oldValue) => {
@@ -155,23 +159,22 @@ function Home() {
 
       {view === "landing" ? (<div className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
-          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500 mb-4">
+          <h1 className="text-4xl font-bold text-transparent bg-[#4a8394] bg-clip-text bg-gradient-to-r mb-4">
             AI Charades
           </h1>
           <p className="text-lg text-gray-600 mb-8">Welcome, detective! Prepare yourself for a thrilling game of "Guess the Personality." I'm a famous person, and it's your job to figure out who I am. </p>
           <p className="text-lg text-gray-600 mb-8">I am powered by AI to answer your questions in the character of the person you are trying to guess. Use your wits to uncover my secret identity through our chat. Let the games begin!</p>
 
-          <a onClick={startGame} className="inline-block bg-[#6366F1] text-white px-6 py-3 rounded-lg text-lg font-medium">
+          <a onClick={startGame} className="inline-block bg-[#4a8394] text-white px-6 py-3 rounded-lg text-lg font-medium">
             Play Now!
           </a>
         </div>
       </div>) : null}
-      {view === "chat" ? <div className="container mx-auto h-[90vh] flex flex-col">
-        <div className="bg-[#D6E9F2] p-4 rounded-lg shadow-md mb-2 shadow-xl border-r-4 border-gray-500 translate-y-2 translate-x-2">
-          <h1 className="text-xl font-bold text-gray-800">AI Charades</h1>
-          <p className="text-gray-600 text-sm">Play the AI guessing game.</p>
+      {view === "chat" ? <div className="container mx-auto h-[88vh] sm:h-[85vh] flex flex-col">
+        <div className="p-4 rounded-lg shadow-md mb-2 translate-y-2 translate-x-2">
+          <h1 className="text-xl font-bold text-[#4a8394]">AI Charades</h1>
         </div>
-        <div className="flex-grow overflow-y-auto bg-[#D6E9F2] rounded-lg shadow-xl border-r-4 border-gray-900 p-4 mb-2 translate-y-2 translate-x-2">
+        <div className="flex-grow overflow-y-auto border-gray-900 p-4 mb-2 translate-y-2 translate-x-2">
           {renderingHistory.map(render => {
             return render.role == "model" ? (<div className="mb-4">
               <div className="flex items-start justify-end">
@@ -194,7 +197,7 @@ function Home() {
           <div ref={bottomRef} />
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="flex justify-center bg-[#D6E9F2] rounded-lg shadow-xl border-r-4 border-gray-500 p-6 mb-4 translate-y-2 translate-x-2">
+          <div className="fixed bottom-0 left-0 right-0 flex justify-center rounded-lg shadow-xl border-gray-500 p-6 mb-4 translate-y-2 translate-x-2">
 
             <input
               id="chat-input"
@@ -219,13 +222,13 @@ function Home() {
         </form>
       </div> : null}
       { view==="end" ? (<div className="container mx-auto p-8">
-        <div className="bg-white rounded-lg shadow-md p-6">
-            <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500 mb-4">Thank You for Playing!</h1>
+        <div className="bg-white flex flex-col items-center rounded-lg shadow-md p-6 ">
+            <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r bg-[#4a8394] mb-4">{ finalState ? "You guessed correctly!" : "You gave up :(" }</h1>
             <p className="text-lg mb-6">{finalMessage}</p>
-            <p className="text-lg mb-6">You've completed the AI Charades game. We hope you had fun!</p>
+            <p className="text-lg mb-6">Thank you for playing. We hope you had fun!</p>
 
             <div onClick={restartGame} className="flex justify-center">
-                <a className="inline-block bg-[#6366F1] text-white px-6 py-3 rounded-lg text-lg font-medium">
+                <a className="inline-block bg-[#4a8394] text-white px-6 py-3 rounded-lg text-lg font-medium">
                     Play Again!
                 </a>
             </div>
