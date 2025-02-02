@@ -226,7 +226,9 @@ function Home() {
             <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r bg-[#4a8394] mb-4">{ finalState ? "You guessed correctly!" : "You gave up :(" }</h1>
             <p className="text-lg mb-6">{finalMessage}</p>
             <p className="text-lg mb-6">Thank you for playing. We hope you had fun!</p>
-
+            <p class="text-gray-700 mb-6">
+            Made with ❤️ by <a href="https://x.com/notsosleepy" >djds4rce</a>.
+          </p>
             <div onClick={restartGame} className="flex justify-center">
                 <a className="inline-block bg-[#4a8394] text-white px-6 py-3 rounded-lg text-lg font-medium">
                     Play Again!
