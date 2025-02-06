@@ -7,7 +7,7 @@ export default function Document() {
             <Head />
             <body className='testing-analytics'>
                 <Main />
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-25EEJ4XQ6T" />
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJWRWJPWK4" />
                 <script
             dangerouslySetInnerHTML={{
               __html: `
