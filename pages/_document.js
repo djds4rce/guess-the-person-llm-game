@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import { GoogleTagManager } from '@next/third-parties/google'
 
 
 export default function Document() {
@@ -7,7 +6,6 @@ export default function Document() {
         <Html>
             <Head />
             <body className='testing-analytics'>
-                <GoogleTagManager gtmId="G-YJWRWJPWK4" />
                 <Main />
                 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJWRWJPWK4" />
                 <script
